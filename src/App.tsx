@@ -1,26 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styled from 'styled-components';
+
+const Hero = styled.div<{ fontSize: string }>`
+  display: grid;
+  place-items: center;
+  background-color: #353535;
+  color: #f06456;
+  height: 100vh;
+  font-size: ${(props) => props.fontSize};
+`;
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  return <Hero fontSize="64px">Hello :)</Hero>;
 }
 
 export default App;
