@@ -1,17 +1,29 @@
 import React from 'react';
-import styled from 'styled-components';
-
-const Hero = styled.div<{ fontSize: string }>`
-  display: grid;
-  place-items: center;
-  background-color: #353535;
-  color: #f06456;
-  height: 100vh;
-  font-size: ${(props) => props.fontSize};
-`;
+import { Route, Switch, Redirect } from 'react-router-dom';
+import useGaTracker from './useGaTracker';
+import Landing from './Landing/Landing';
+import About from './About/About';
+import Contact from './Contact/Contact';
+import Photography from './Photography/Photography';
+import Error from './Error';
 
 function App() {
-  return <Hero fontSize="64px">Hello :)</Hero>;
+  useGaTracker();
+
+  return (
+    <div className="App">
+      <Switch>
+        <Route path="/" exact component={Landing} />
+
+        <Route path="/about" exact component={About} />
+        <Route path="/contact" exact component={Contact} />
+        <Route path="/photgraphy" exact component={Photography} />
+
+        <Route path="/404" component={Error} />
+        <Redirect to="/404" />
+      </Switch>
+    </div>
+  );
 }
 
 export default App;
